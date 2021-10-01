@@ -1,0 +1,1 @@
+web: gunicorn codefury.wsgi --log-file -
