@@ -40,16 +40,19 @@ class ChatConsumer(WebsocketConsumer):
     # Receive message from room group
     def chat_message(self, event):
         event = event['message']
+        roomName = event['roomid']
         message = event['question']
         opt1 = event['option1']
         opt2 = event['option2']
         opt3 = event['option3']
         opt4 = event['option4']
         ans = event['answer']
+        qid = event['qid']
+        print("QUESTION ID: ", qid)
         # Send message to WebSocket
         
         # creating a model instance
-        question = Question.objects.create(question=message, option1=opt1, option2=opt2, option3=opt3, option4=opt4,answer=int(ans))
+        question = Question.objects.create(roomname=roomName ,question=message, option1=opt1, option2=opt2, option3=opt3, option4=opt4,answer=int(ans), qid=qid)
         try:
             question.save()
             self.send(text_data=json.dumps({
@@ -60,3 +63,4 @@ class ChatConsumer(WebsocketConsumer):
             'message': "Question not created! 😂", 
             }))
 
+   
