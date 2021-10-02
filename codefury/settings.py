@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['codefury4-backend.herokuapp.com/', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'rest_framework',
 ]
+ASGI_APPLICATION = 'codefury.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

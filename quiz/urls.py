@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.roomView, name="quiz")
+    path("", views.createRoomView, name="createRoom"),
+    path("<str:room_name>/", views.roomView, name="room")
 ]
