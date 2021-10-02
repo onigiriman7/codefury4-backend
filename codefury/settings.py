@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-#pt1&8wh(4)vk+)9l23k3vi_)wnz6#^&!36facy1n4u5cfnhbm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -97,11 +98,9 @@ DATABASES = {
 }
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissions',
+    )
 }
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

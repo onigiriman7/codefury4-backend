@@ -48,16 +48,18 @@ class ChatConsumer(WebsocketConsumer):
         opt4 = event['option4']
         ans = event['answer']
         qid = event['qid']
-        print("QUESTION ID: ", qid)
+        # print("QUESTION ID: ", qid)
+        print(event)
         # Send message to WebSocket
         
         # creating a model instance
         question = Question.objects.create(roomname=roomName ,question=message, option1=opt1, option2=opt2, option3=opt3, option4=opt4,answer=int(ans), qid=qid)
         try:
-            question.save()
-            self.send(text_data=json.dumps({
-            'message': "Quesition created! 😂", 
-            }))
+            if(not Question.objects.get(message == question.message)):
+                question.save()
+                self.send(text_data=json.dumps({
+                'message': "Quesition created! 😂", 
+                }))
         except:
             self.send(text_data=json.dumps({
             'message': "Question not created! 😂", 

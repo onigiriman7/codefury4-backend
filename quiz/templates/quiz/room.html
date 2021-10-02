@@ -43,11 +43,11 @@
             }
         };
         function guidGenerator() {
-                var S4 = function() {
-                return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-                };
-                return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-            }
+            var S4 = function () {
+                return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+            };
+            return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+        }
         document.querySelector('#chat-message-submit').onclick = function (e) {
             const messageInputDom = document.querySelector('#chat-message-input');
             const option1 = document.getElementById("option1").value;
@@ -60,14 +60,14 @@
             console.log(chatSocket)
             chatSocket.send(JSON.stringify({
                 'message': {
-                    'roomid':roomName,
+                    'roomid': roomName,
                     'question': message,
                     'option1': option1,
                     'option2': option2,
                     'option3': option3,
                     'option4': option4,
                     'answer': answer,
-                    'qid':qid,
+                    'qid': qid,
                 }
             }));
             messageInputDom.value = '';
