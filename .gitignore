@@ -4,3 +4,5 @@ quiz/__pycache__/consumers.cpython-39.pyc
 codefury/__pycache__/settings.cpython-39.pyc
 codefury/__pycache__/settings.cpython-39.pyc
 quiz/__pycache__/consumers.cpython-39.pyc
+*.pyc
+codefury/__pycache__/settings.cpython-39.pyc
