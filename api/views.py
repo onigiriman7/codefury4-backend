@@ -14,7 +14,7 @@ def testview(request):
 @api_view(["GET"])
 @permission_classes((permissions.AllowAny,))
 def question_api(request):
-    qs = Question.objects.all()
+    qs = set(Question.objects.all())
     ser = QuestionSerializer(qs, many=True)
     return Response(ser.data)
     # return JsonResponse(qs_json, content_type='application/json', safe=False)

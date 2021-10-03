@@ -48,12 +48,13 @@ class ChatConsumer(WebsocketConsumer):
         opt4 = event['option4']
         ans = event['answer']
         qid = event['qid']
+        url = event['url']
         # print("QUESTION ID: ", qid)
         print(event)
         # Send message to WebSocket
         
         # creating a model instance
-        question = Question.objects.create(roomname=roomName ,question=message, option1=opt1, option2=opt2, option3=opt3, option4=opt4,answer=int(ans), qid=qid)
+        question = Question.objects.create(roomname=roomName ,question=message, option1=opt1, option2=opt2, option3=opt3, option4=opt4,answer=int(ans), qid=qid, resource_url=url)
         try:
             if(not Question.objects.get(message == question.message)):
                 question.save()
